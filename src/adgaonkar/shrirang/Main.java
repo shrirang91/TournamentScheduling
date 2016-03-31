@@ -1,7 +1,7 @@
 package adgaonkar.shrirang;
 import java.util.*;
 import java.math.*;
-class scheduler{
+class Main{
 	public static void main(String[] args){
 		
 		Scanner s=new Scanner(System.in);
@@ -21,11 +21,11 @@ class scheduler{
 			list=new int[n+1];
 			for(int i=0;i<n;i++)
 				list[i]=i+1;
-			list[n]=0;
+			list[n]=n+1;
 		}
 		
 		int size=list.length;
-		//System.out.println("size is :"+size);
+		System.out.println("size is :"+size);
 		int [] listA=new int[size/2];
 		int [] listB=new int[size/2];
 		
@@ -42,9 +42,17 @@ class scheduler{
 		while(days>0){
 			days--;k++;
 			for(int i=0;i<size/2;i++){
-				listP[Math.abs(listA[i]-1)]=listB[i];
-				listP[Math.abs(listB[i]-1)]=listA[i];
+				listP[(listA[i]-1)]=listB[i];
+				listP[(listB[i]-1)]=listA[i];
 			}
+			
+			/*System.out.println("------listP\n");
+			for(int i=0;i<size;i++)
+				System.out.print(listP[i]+"\t");
+			System.out.println("------P\n");
+			*/
+			
+			
 			System.out.print("\n"+k);
 			if(n%2==0){
 			for(int i=0;i<size;i++)	
@@ -52,7 +60,9 @@ class scheduler{
 			}
 			else{
 				for(int i=0;i<size-1;i++){
-					if(listP[i]==0)
+					if(listP[i]==n+1)
+						System.out.print(":-");
+					else if(listP[i]==(i+1))
 						System.out.print(":-");
 					else
 						System.out.print(":"+listP[i]);
