@@ -15,10 +15,11 @@ class Main {
 			System.out.println("1:2:1");
 		else {
 			File file = new File("output.txt");
-			if (!file.exists() && file.isDirectory())
-				file.createNewFile();
+			FileWriter writer = new FileWriter(file,true);
 			
-			FileWriter writer = new FileWriter(file);
+			if (!file.exists() && !file.isDirectory())
+				file.createNewFile();
+			else{
 				int days;
 				int[] list;
 				// check whether # of players is even or odd to SET # OF DAYS
@@ -115,6 +116,7 @@ class Main {
 				for (int i = 0; i < n; i++)
 					writer.write("##");
 				writer.flush();
+		}
 		}
 	}
 
