@@ -12,7 +12,7 @@ class Main {
 		if (n <= 1)
 			System.out.print("\ncannot create a schedule");
 		else if (n == 2)
-			System.out.println("1:2:1");
+			System.out.print("\n1:2:1");
 		else {
 			File file = new File("output.txt");
 			FileWriter writer = new FileWriter(file,true);
@@ -112,10 +112,12 @@ class Main {
 					listA[1] = tempB;
 					listB[size / 2 - 1] = tempA;
 				}
+				if(n>=10){
 				writer.write("\n");
 				for (int i = 0; i < n; i++)
 					writer.write("##");
 				writer.flush();
+				}
 		}
 		}
 	}
@@ -142,6 +144,11 @@ class Main {
 			while (read.hasNextInt()) {
 				np = read.nextInt();
 				scheduler(np);
+				if(np<10){
+					System.out.println();
+					for(int i=0;i<np;i++)
+						System.out.print("##");
+				}
 			}
 		}
 	}
